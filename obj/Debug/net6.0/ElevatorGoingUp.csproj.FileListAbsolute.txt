@@ -1,0 +1,15 @@
+C:\Dev\ElevatorGoingUp\ElevatorGoingUp\bin\Debug\net6.0\ElevatorGoingUp.exe
+C:\Dev\ElevatorGoingUp\ElevatorGoingUp\bin\Debug\net6.0\ElevatorGoingUp.deps.json
+C:\Dev\ElevatorGoingUp\ElevatorGoingUp\bin\Debug\net6.0\ElevatorGoingUp.runtimeconfig.json
+C:\Dev\ElevatorGoingUp\ElevatorGoingUp\bin\Debug\net6.0\ElevatorGoingUp.dll
+C:\Dev\ElevatorGoingUp\ElevatorGoingUp\bin\Debug\net6.0\ElevatorGoingUp.pdb
+C:\Dev\ElevatorGoingUp\ElevatorGoingUp\obj\Debug\net6.0\ElevatorGoingUp.csproj.AssemblyReference.cache
+C:\Dev\ElevatorGoingUp\ElevatorGoingUp\obj\Debug\net6.0\ElevatorGoingUp.GeneratedMSBuildEditorConfig.editorconfig
+C:\Dev\ElevatorGoingUp\ElevatorGoingUp\obj\Debug\net6.0\ElevatorGoingUp.AssemblyInfoInputs.cache
+C:\Dev\ElevatorGoingUp\ElevatorGoingUp\obj\Debug\net6.0\ElevatorGoingUp.AssemblyInfo.cs
+C:\Dev\ElevatorGoingUp\ElevatorGoingUp\obj\Debug\net6.0\ElevatorGoingUp.csproj.CoreCompileInputs.cache
+C:\Dev\ElevatorGoingUp\ElevatorGoingUp\obj\Debug\net6.0\ElevatorGoingUp.dll
+C:\Dev\ElevatorGoingUp\ElevatorGoingUp\obj\Debug\net6.0\refint\ElevatorGoingUp.dll
+C:\Dev\ElevatorGoingUp\ElevatorGoingUp\obj\Debug\net6.0\ElevatorGoingUp.pdb
+C:\Dev\ElevatorGoingUp\ElevatorGoingUp\obj\Debug\net6.0\ElevatorGoingUp.genruntimeconfig.cache
+C:\Dev\ElevatorGoingUp\ElevatorGoingUp\obj\Debug\net6.0\ref\ElevatorGoingUp.dll

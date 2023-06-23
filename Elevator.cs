@@ -16,9 +16,5 @@ namespace ElevatorGoingUp
 
         public List<ElevatorInstructions> ElevatorInstructionsList { get; set; }
 
-        
-
-
-
     }
 }

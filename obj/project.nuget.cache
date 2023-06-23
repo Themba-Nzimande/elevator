@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "GRBjHpTwzmO9ILxZok1Z6sPc1ipHw6E8oRl2D/rdCMpRMX3+Ho29QTetsHIhEFd3obfz7RkIf5guKRDI8hxofg==",
+  "dgSpecHash": "TuHvWmyeXfIOHUaUlToXCdP6hlyC/WLguNREieYolrCyK7oiv/7RITlAbsv7EX/4RwuCTWMPETuqNohBlDnsJQ==",
   "success": true,
-  "projectFilePath": "C:\\Dev\\ElevatorGoingUp\\ElevatorGoingUp\\ElevatorGoingUp.csproj",
+  "projectFilePath": "C:\\Dev\\ElevatorGoingUp\\elevator\\ElevatorGoingUp.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

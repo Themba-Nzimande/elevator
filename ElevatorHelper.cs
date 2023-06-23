@@ -2,6 +2,16 @@
 
 public class ElevatorHelper
 {
+    public int numberOfFloors { get; set; }
+
+    public int weightLimit { get; set; }
+
+    public ElevatorHelper(int numberOfFloors, int weightLimit)
+    {
+        this.numberOfFloors = numberOfFloors;
+        this.weightLimit = weightLimit;
+    }
+
     public void DirectionDeterminer(Elevator elevator)
     {
         try
@@ -14,7 +24,7 @@ public class ElevatorHelper
                 elaCurrenDirectionBasedOfTripsItHasLoop = "up";
                 elevator.Direction = elaCurrenDirectionBasedOfTripsItHasLoop;
             }
-            else if (elevator.CurrentFloor == 10)
+            else if (elevator.CurrentFloor == numberOfFloors)
             {
                 elaCurrenDirectionBasedOfTripsItHasLoop = "down";
                 elevator.Direction = elaCurrenDirectionBasedOfTripsItHasLoop;
@@ -38,13 +48,13 @@ public class ElevatorHelper
     }
 
 
-    public ElevatorInstructions CreateNewTrip(int floorCallingFrom, 
-                                              int floorTripDestination, 
+    public ElevatorInstructions CreateNewTrip(int floorCallingFrom,
+                                              int floorTripDestination,
                                               int numberOfPeopleForTrip)
     {
         try
         {
-            return  new ElevatorInstructions()
+            return new ElevatorInstructions()
             {
                 direction = floorCallingFrom < floorTripDestination ? "up" : "down",
                 floorNumber = floorTripDestination,
@@ -63,13 +73,13 @@ public class ElevatorHelper
 
     public void AddNewTrip(Elevator elevator)
     {
-		try
-		{
+        try
+        {
             //Place where request for the elevator are done (loops per floor)
-            Console.WriteLine("Enter floor number to call the elevator to (1-10): ");
+            Console.WriteLine($"Enter floor number to call the elevator to (1-{numberOfFloors}): ");
             int floorCallingFrom = int.Parse(Console.ReadLine());
 
-            Console.WriteLine("Enter floor number you want to go to (1-10): ");
+            Console.WriteLine($"Enter floor number you want to go to (1-{numberOfFloors}): ");
             int floorTripDestination = int.Parse(Console.ReadLine());
 
             Console.WriteLine("Enter the number of people waiting on the floor for this trip: ");
@@ -85,7 +95,7 @@ public class ElevatorHelper
                 peopleBoarded = false
             };
 
-            
+
 
             //Check if new trip can be boarded on current floor
             if (elevator.CurrentFloor == trip.floorCallingFromNumber)
@@ -95,7 +105,7 @@ public class ElevatorHelper
             }
 
             //Add trip to ela list if it will be within weight limit
-            if (CheckAgainstWeightLimitBeforeOnboarding(12, elevator, trip))
+            if (CheckAgainstWeightLimitBeforeOnboarding(elevator, trip))
             {
                 elevator.ElevatorInstructionsList.Add(trip);
             }
@@ -103,28 +113,28 @@ public class ElevatorHelper
             {
                 Console.WriteLine($"Trip load will exceed current max capacity");
             }
-            
+
         }
-		catch (Exception ex)
-		{
-			Console.WriteLine(ex);
-			throw ex;
-		}
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex);
+            throw ex;
+        }
     }
 
-    
+
     public void ElevatorMinMaxFloorReachedDirectionChange(Elevator elevator)
     {
         try
         {
             //If ela is at highest/lowest floor then change direction
-            if (elevator.CurrentFloor == 10 || elevator.CurrentFloor == 1)
+            if (elevator.CurrentFloor == numberOfFloors || elevator.CurrentFloor == 1)
             {
-                elevator.Direction = elevator.CurrentFloor == 10 ? "down" : "up";
+                elevator.Direction = elevator.CurrentFloor == numberOfFloors ? "down" : "up";
             }
 
             //If elevator has has done it's highest or lowest trip it must change direction
-            if (elevator.Direction == "up" && 
+            if (elevator.Direction == "up" &&
                 elevator.ElevatorInstructionsList.Any(a => a.direction == "down") &&
                 !elevator.ElevatorInstructionsList.Any(a => a.direction == "up"))
             {
@@ -202,7 +212,7 @@ public class ElevatorHelper
                 //Delete the trips from the ela
                 elevator.ElevatorInstructionsList.RemoveAll(a => a.floorNumber == elevator.CurrentFloor);
                 //elevator.ElevatorInstructionsList.First(a => a.floorCallingFromNumber == elevator.CurrentFloor).peopleBoarded = true;
-               
+
             }
         }
         catch (Exception ex)
@@ -213,8 +223,7 @@ public class ElevatorHelper
     }
 
 
-    public bool CheckAgainstWeightLimitBeforeOnboarding(int weightLimit, 
-                                                        Elevator elevator,
+    public bool CheckAgainstWeightLimitBeforeOnboarding(Elevator elevator,
                                                         ElevatorInstructions elevatorInstruction)
     {
         try
@@ -249,94 +258,5 @@ public class ElevatorHelper
             throw ex;
         }
     }
-//    //private List<Elevator> elevators;
-//    private int numberOfFloors;
-
-//    public ElevatorHelper(int numberOfElevators, int numberOfFloors)
-//    {
-//        //elevators = new List<Elevator>();
-//        for (int i = 0; i < numberOfElevators; i++)
-//        {
-//           // elevators.Add(new Elevator());
-//        }
-
-//        this.numberOfFloors = numberOfFloors;
-//    }
-
-//    public void CallElevator(int floor, int numberOfPeople)
-//    {
-//        //Elevator nearestElevator = GetNearestElevator(floor);
-//        nearestElevator.IsMoving = true;
-//        nearestElevator.Direction = floor > nearestElevator.CurrentFloor ? "up" : "down";
-//        nearestElevator.NumberOfPeople = numberOfPeople;
-
-//        // Simulate the elevator moving to the requested floor
-//        while (nearestElevator.CurrentFloor != floor)
-//        {
-//            if (nearestElevator.Direction == "up")
-//            {
-//                nearestElevator.CurrentFloor++;
-//            }
-//            else
-//            {
-//                nearestElevator.CurrentFloor--;
-//            }
-
-//            UpdateElevatorStatus(nearestElevator);
-//        }
-
-//        nearestElevator.IsMoving = false;
-//        nearestElevator.NumberOfPeople = 0;
-//    }
-
-//    private void UpdateElevatorStatus(Elevator elevator)
-//    {
-//        foreach (var person in elevator.Passengers.ToList())
-//        {
-//            if (person.DestinationFloor == elevator.CurrentFloor)
-//            {
-//                elevator.Passengers.Remove(person);
-//            }
-//        }
-
-//        elevator.NumberOfPeople = elevator.Passengers.Count;
-//    }
-
-//    private Elevator GetNearestElevator(int floor)
-//    {
-//        Elevator nearestElevator = elevators[0];
-//        int minDistance = Math.Abs(nearestElevator.CurrentFloor - floor);
-
-//        foreach (var elevator in elevators)
-//        {
-//            int distance = Math.Abs(elevator.CurrentFloor - floor);
-//            if (distance < minDistance)
-//            {
-//                nearestElevator = elevator;
-//                minDistance = distance;
-//            }
-//        }
-
-//        return nearestElevator;
-//    }
-
-//    public void PrintElevatorStatus()
-//    {
-//        for (int i = 0; i < elevators.Count; i++)
-//        {
-//            Console.WriteLine($"Elevator {i + 1} - Floor: {elevators[i].CurrentFloor}, Moving: {elevators[i].IsMoving}, Direction: {elevators[i].Direction}, People: {elevators[i].NumberOfPeople}");
-//        }
-//    }
 }
 
-
-
-//public class Person
-//{
-//    public int DestinationFloor { get; }
-
-//    public Person(int destinationFloor)
-//    {
-//        DestinationFloor = destinationFloor;
-//    }
-//}

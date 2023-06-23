@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Dev\\ElevatorGoingUp\\ElevatorGoingUp\\ElevatorGoingUp.csproj",
+      "projectUniqueName": "C:\\Dev\\ElevatorGoingUp\\elevator\\ElevatorGoingUp.csproj",
       "projectName": "ElevatorGoingUp",
-      "projectPath": "C:\\Dev\\ElevatorGoingUp\\ElevatorGoingUp\\ElevatorGoingUp.csproj",
+      "projectPath": "C:\\Dev\\ElevatorGoingUp\\elevator\\ElevatorGoingUp.csproj",
       "packagesPath": "C:\\Users\\papin\\.nuget\\packages\\",
-      "outputPath": "C:\\Dev\\ElevatorGoingUp\\ElevatorGoingUp\\obj\\",
+      "outputPath": "C:\\Dev\\ElevatorGoingUp\\elevator\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\papin\\AppData\\Roaming\\NuGet\\NuGet.Config",

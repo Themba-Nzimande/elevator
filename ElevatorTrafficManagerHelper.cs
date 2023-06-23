@@ -8,7 +8,6 @@ namespace ElevatorGoingUp
 {
     public class ElevatorTrafficManagerHelper
     {
-        
 
         public void AssignTripsToElevator(ElevatorInstructions elevatorInstructions,
 										 List<Elevator> elevators)

@@ -1,10 +1,19 @@
 ﻿using ElevatorGoingUp;
-
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+/// <summary>
+/// The engine of the app that does the moving, loading and offloading per elevator
+/// </summary>
 public class ElevatorHelper
 {
     public int numberOfFloors { get; set; }
 
-    public int weightLimit { get; set; }
+    private int _weightLimit = 12;
+
+    public int weightLimit
+    {
+        get { return _weightLimit; }
+        set { _weightLimit = value; }
+    }
 
     public ElevatorHelper(int numberOfFloors, int weightLimit)
     {
@@ -122,7 +131,7 @@ public class ElevatorHelper
         }
     }
 
-
+    //not needed so delete
     public void ElevatorMinMaxFloorReachedDirectionChange(Elevator elevator)
     {
         try
@@ -258,5 +267,8 @@ public class ElevatorHelper
             throw ex;
         }
     }
+
+
+   
 }
 

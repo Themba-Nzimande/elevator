@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace ElevatorGoingUp
 {
+    /// <summary>
+    /// Basically elevator trip requests that tell the elevator what to do
+    /// </summary>
     public class ElevatorInstructions
     {
         public int floorNumber { get; set; }

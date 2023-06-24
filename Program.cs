@@ -22,7 +22,7 @@ internal class Program
             numberOfElevators = int.Parse(Console.ReadLine());
         }
 
-        //Dynamic elevators
+        //Dynamic number of elevators
         var elevators = new List<Elevator>();
         for (int i = 1; i <= numberOfElevators; i++)
         {
@@ -39,13 +39,13 @@ internal class Program
         }
 
 
-        //Need this for umm stuff
+        //helpers that do heavy lifting
         var elaHelper = new ElevatorHelper(numberOfFloors, weightLimit);
         var elaTrafficManager = new ElevatorTrafficManagerHelper();
 
 
 
-
+        //Loop to keep the app going
         while (true)
         {
 
@@ -74,7 +74,7 @@ internal class Program
             }
 
 
-            //Make the ela move if they have a trip
+            //Make the ela move if they have a trip or display that it's not moving if it has no trips
             for (int i = 0; i < elevators.Count; i++)
             {
                 //Only execute this if an ela has a trip
@@ -82,16 +82,19 @@ internal class Program
                 {
                     //Make the ela moe through the floors
                     elaHelper.DirectionDeterminer(elevators[i]);
+
                     //Change the ela's current floor as it moves through each floor
-                    if (elevators[i].Direction == "up")
-                    {
-                        elevators[i].CurrentFloor = elevators[i].CurrentFloor + 1;
-                    }
-                    else
-                    {
-                        elevators[i].CurrentFloor = elevators[i].CurrentFloor - 1;
-                    }
-                    //elevators[i].CurrentFloor = elevators[i].Direction == "up" ? (elevators[i].CurrentFloor + 1) : (elevators[i].CurrentFloor - 1);
+                    elevators[i].CurrentFloor = elevators[i].Direction == "up" ?
+                                                elevators[i].CurrentFloor + 1 :
+                                                elevators[i].CurrentFloor - 1;
+                    //if (elevators[i].Direction == "up")
+                    //{
+                    //    elevators[i].CurrentFloor = elevators[i].CurrentFloor + 1;
+                    //}
+                    //else
+                    //{
+                    //    elevators[i].CurrentFloor = elevators[i].CurrentFloor - 1;
+                    //}
 
                     elaHelper.ElevatorLoadPeople(elevators[i]);
 
@@ -103,60 +106,10 @@ internal class Program
                 }
                 else
                 {
-                    Console.WriteLine($"Ela{elevators[i].Id} is stationery at floor {elevators[i].CurrentFloor}");
+                    Console.WriteLine($"Elevator {elevators[i].Id} is stationery at floor {elevators[i].CurrentFloor}");
                 }
 
             }
-
-            ////Make the ela moe through the floors
-            ////Check if the ela should go up or down
-            //var elaCurrenDirectionBasedOfTripsItHas = string.Empty;
-            //    var tt = ela1.ElevatorInstructionsList;
-            //    //if it's on ground floor it has to go up DUH
-            //    if (ela1.CurrentFloor == 1)
-            //    {
-            //        elaCurrenDirectionBasedOfTripsItHas = "up";
-            //        ela1.Direction = elaCurrenDirectionBasedOfTripsItHas;
-            //    }
-            //    else if (ela1.CurrentFloor > 1 && ela1.Direction == "up" && ela1.ElevatorInstructionsList.Any(a => a.floorNumber < ela1.CurrentFloor))
-            //    {
-            //        elaCurrenDirectionBasedOfTripsItHas = "up";
-            //        ela1.Direction = elaCurrenDirectionBasedOfTripsItHas;
-            //    }
-            //    else if (ela1.CurrentFloor > 1 && ela1.Direction == "down" && ela1.ElevatorInstructionsList.Any(a => a.floorNumber > ela1.CurrentFloor))
-            //    {
-            //        elaCurrenDirectionBasedOfTripsItHas = "down";
-            //        ela1.Direction = elaCurrenDirectionBasedOfTripsItHas;
-            //    }
-            //    //Change the ela's current floor as it moves through each floor
-            //    ela1.CurrentFloor = ela1.Direction == "up" ? (ela1.CurrentFloor + 1) : (ela1.CurrentFloor - 1);
-
-            //    //Update ela's number of people if the current floor matches with the instruction floor called from number
-            //    if (ela1.ElevatorInstructionsList.Any(a => a.floorCallingFromNumber == ela1.CurrentFloor))
-            //    {
-            //        ela1.NumberOfPeople = ela1.NumberOfPeople + ela1.ElevatorInstructionsList.First(a => a.floorCallingFromNumber == ela1.CurrentFloor).numberOfPeopleInLoad;
-            //        ela1.ElevatorInstructionsList.First(a => a.floorCallingFromNumber == ela1.CurrentFloor).peopleBoarded = true;
-            //    }
-
-            //    elaHelper.ElevatorStatusOutput(ela1);
-
-            //    //Chance for user to enter new instructions
-            //    Console.WriteLine("Type NEW to add a new trip");
-            //    var newTripOrContinueOrExit = Console.ReadLine();
-            //    if (newTripOrContinueOrExit == "NEW")
-            //    {
-            //        elaHelper.AddNewTrip(ela1);
-            //    }
-            //    if (newTripOrContinueOrExit == "EXIT")
-            //    {
-            //        break;
-            //    }
-
-            //    elaHelper.ElevatorMinMaxFloorReachedDirectionChange(ela1);
-
-
-
-
 
         }
     }
@@ -173,26 +126,6 @@ internal class Program
 
 
 
-// Create an elevator controller with 3 elevators and 10 floors
-//ElevatorHelper elevatorController = new ElevatorHelper(1, 10);
-
-//while (true)
-//{
-//    Console.WriteLine("Enter floor number to call the elevator (1-10): ");
-//    int floor = int.Parse(Console.ReadLine());
-
-//    Console.WriteLine("Enter the number of people waiting on the floor: ");
-//    int numberOfPeople = int.Parse(Console.ReadLine());
-
-//    elevatorController.CallElevator(floor, numberOfPeople);
-//    elevatorController.PrintElevatorStatus();
-
-//    Console.WriteLine("Do you want to continue? (y/n)");
-//    string input = Console.ReadLine();
-
-//    if (input.ToLower() == "n")
-//        break;
-//}
 
 
 

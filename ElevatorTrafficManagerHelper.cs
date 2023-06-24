@@ -5,10 +5,16 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace ElevatorGoingUp
-{
+{/// <summary>
+/// Just used for assigning trips to the closest elevator
+/// </summary>
     public class ElevatorTrafficManagerHelper
     {
-
+        /// <summary>
+        /// Just gets the elevator closest to the request based on all the elevators and the request
+        /// </summary>
+        /// <param name="elevatorInstructions">elevator trip</param>
+        /// <param name="elevators">list of elevators</param>
         public void AssignTripsToElevator(ElevatorInstructions elevatorInstructions,
 										 List<Elevator> elevators)
         {
@@ -28,7 +34,7 @@ namespace ElevatorGoingUp
         }
 
 
-		private int FindClosestFloorNumber(List<int> numbers, int target)
+		public int FindClosestFloorNumber(List<int> numbers, int target)
         {
             int closestNumber = numbers[0];
             int minDifference = Math.Abs(numbers[0] - target);

@@ -10,7 +10,8 @@ internal class Program
         int numberOfFloors = 10;
         int numberOfElevators = 3;
         int weightLimit = 12;
-        if (Console.ReadLine().ToLower() == "y")
+        var defauktOrCustomSetup = Console.ReadLine();
+        if (!string.IsNullOrEmpty(defauktOrCustomSetup) && defauktOrCustomSetup.ToLower() == "y")
         {
             Console.WriteLine("Enter number of floors");
             numberOfFloors = int.Parse(Console.ReadLine());
@@ -21,6 +22,7 @@ internal class Program
             Console.WriteLine("Enter the elevator weight limit");
             numberOfElevators = int.Parse(Console.ReadLine());
         }
+        
 
         //Dynamic number of elevators
         var elevators = new List<Elevator>();
@@ -51,19 +53,20 @@ internal class Program
 
             //Chance for user to enter new instructions
             Console.WriteLine("Type NEW to add a new trip");
-            var newTripOrContinueOrExit = Console.ReadLine();
-            if (newTripOrContinueOrExit == "NEW")
+            var newTripOrContinueOrExit = Console.ReadLine().ToLower();
+            if (newTripOrContinueOrExit == "new")
             {
                 //Place where request for the elevator are done (loops per floor)
-                Console.WriteLine("Enter floor number to call the elevator to (1-10): ");
-                int floorCallingFrom = int.Parse(Console.ReadLine());
+                int floorCallingFrom = 0;
+                elaHelper.GetValidPositiveInt($"Enter floor number to call the elevator to (1-{numberOfFloors}): ", floorCallingFrom);
 
-                Console.WriteLine("Enter floor number you want to go to (1-10): ");
-                int floorTripDestination = int.Parse(Console.ReadLine());
+                int floorTripDestination = 0;
+                elaHelper.GetValidPositiveInt($"Enter floor number you want to go to (1-{numberOfFloors}): ", floorTripDestination);
 
-                Console.WriteLine("Enter the number of people waiting on the floor for this trip: ");
-                int numberOfPeopleForTrip = int.Parse(Console.ReadLine());
+                int numberOfPeopleForTrip = 0;
+                elaHelper.GetValidPositiveInt($"Enter the number of people waiting on the floor for this trip: ", numberOfPeopleForTrip);
 
+                
                 var newTrip = elaHelper.CreateNewTrip(floorCallingFrom, floorTripDestination, numberOfPeopleForTrip);
                 elaTrafficManager.AssignTripsToElevator(newTrip, elevators);
 
@@ -87,14 +90,6 @@ internal class Program
                     elevators[i].CurrentFloor = elevators[i].Direction == "up" ?
                                                 elevators[i].CurrentFloor + 1 :
                                                 elevators[i].CurrentFloor - 1;
-                    //if (elevators[i].Direction == "up")
-                    //{
-                    //    elevators[i].CurrentFloor = elevators[i].CurrentFloor + 1;
-                    //}
-                    //else
-                    //{
-                    //    elevators[i].CurrentFloor = elevators[i].CurrentFloor - 1;
-                    //}
 
                     elaHelper.ElevatorLoadPeople(elevators[i]);
 
@@ -102,7 +97,6 @@ internal class Program
 
                     elaHelper.ElevatorStatusOutput(elevators[i]);
 
-                    //elaHelper.ElevatorMinMaxFloorReachedDirectionChange(elevators[i]);
                 }
                 else
                 {

@@ -72,7 +72,7 @@ namespace ElevatorTestProject
         }
 
         [TestMethod]
-        public void DirectionDeterminerTest_NewTripGoingDownForElevatorGoingUpChangeDirectionUpToDown_Down()
+        public void DirectionDeterminerTest_NewTripGoingDownForElevatorGoingUpChangeDirectionUpToDown_Up()
         {
             var loadedElevator = new Elevator()
             {
@@ -97,12 +97,12 @@ namespace ElevatorTestProject
 
             elevatorHelper.DirectionDeterminer(loadedElevator);
 
-            Assert.AreEqual("down", loadedElevator.Direction);
+            Assert.AreEqual("up", loadedElevator.Direction);
         }
 
 
         [TestMethod]
-        public void DirectionDeterminerTest_NewTripGoingUpForElevatorGoingDownChangeDirectionDownToUp_Up()
+        public void DirectionDeterminerTest_NewTripGoingUpForElevatorGoingDownChangeDirectionDownToUp_Down()
         {
             var loadedElevator = new Elevator()
             {
@@ -127,7 +127,7 @@ namespace ElevatorTestProject
 
             elevatorHelper.DirectionDeterminer(loadedElevator);
 
-            Assert.AreEqual("up", loadedElevator.Direction);
+            Assert.AreEqual("down", loadedElevator.Direction);
         }
         #endregion
 

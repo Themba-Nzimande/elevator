@@ -52,7 +52,7 @@ public class ElevatorHelper
         catch (Exception ex)
         {
             Console.WriteLine(ex);
-            throw ex;
+            throw;
         }
     }
 
@@ -75,7 +75,7 @@ public class ElevatorHelper
         catch (Exception ex)
         {
             Console.WriteLine(ex);
-            throw ex;
+            throw;
         }
     }
 
@@ -127,7 +127,7 @@ public class ElevatorHelper
         catch (Exception ex)
         {
             Console.WriteLine(ex);
-            throw ex;
+            throw;
         }
     }
 
@@ -159,7 +159,7 @@ public class ElevatorHelper
         catch (Exception ex)
         {
             Console.WriteLine(ex);
-            throw ex;
+            throw;
         }
     }
 
@@ -185,7 +185,7 @@ public class ElevatorHelper
         catch (Exception ex)
         {
             Console.WriteLine(ex);
-            throw ex;
+            throw;
         }
     }
 
@@ -205,7 +205,7 @@ public class ElevatorHelper
         catch (Exception ex)
         {
             Console.WriteLine(ex);
-            throw ex;
+            throw;
         }
     }
 
@@ -227,7 +227,7 @@ public class ElevatorHelper
         catch (Exception ex)
         {
             Console.WriteLine(ex);
-            throw ex;
+            throw;
         }
     }
 
@@ -264,11 +264,33 @@ public class ElevatorHelper
         catch (Exception ex)
         {
             Console.WriteLine(ex);
-            throw ex;
+            throw;
         }
     }
 
 
    
+
+    public void GetValidPositiveInt(string promptText, int intVariable)
+    {
+        try
+        {
+            if (int.TryParse(Console.ReadLine(), out int number) && number > 0)
+            {
+                Console.WriteLine("Valid positive integer input.");
+                intVariable = number;
+            }
+            else
+            {
+                Console.WriteLine("Invalid input or not a positive integer. Please try again");
+                GetValidPositiveInt(promptText, intVariable);
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex);
+            throw;
+        }
+    }
 }
 

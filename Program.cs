@@ -52,7 +52,7 @@ internal class Program
         {
 
             //Chance for user to enter new instructions
-            Console.WriteLine("Type NEW to add a new trip");
+            Console.WriteLine("Type NEW to add a new trip or type exit to close the program");
             var newTripOrContinueOrExit = Console.ReadLine().ToLower();
             if (newTripOrContinueOrExit == "new")
             {
@@ -71,7 +71,7 @@ internal class Program
                 elaTrafficManager.AssignTripsToElevator(newTrip, elevators);
 
             }
-            if (newTripOrContinueOrExit == "EXIT")
+            if (newTripOrContinueOrExit == "exit")
             {
                 break;
             }
